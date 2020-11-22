@@ -1,0 +1,6 @@
+name "open-simplex-2"
+description "A D language implementation of https://github.com/KdotJPG/OpenSimplex2"
+authors "Andrej Petrović"
+license "public domain"
+
+targetType "library"

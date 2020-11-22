@@ -1,0 +1,16 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/opensimplex2
+opensimplex2.so
+opensimplex2.dylib
+opensimplex2.dll
+opensimplex2.a
+libopensimplex2.a
+opensimplex2.lib
+opensimplex2-test-*
+*.exe
+*.o
+*.obj
+*.lst
