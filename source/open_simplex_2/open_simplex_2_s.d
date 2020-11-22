@@ -1066,3 +1066,29 @@ unittest
 	IFImage img = IFImage(WIDTH, HEIGHT, ColFmt.Y, pixels);
 	write_png("./test-results/OpenSimplex2S 3D.png", WIDTH, HEIGHT, img.pixels);
 }
+
+@("OpenSimplex2S 4D slice")
+unittest
+{
+	import imageformats : IFImage, ColFmt, write_png;
+	import std.conv : to;
+
+	OpenSimplex2S openSimplex2s = new OpenSimplex2S(3_874_6527_389_465L);
+
+	enum WIDTH = 512;
+	enum HEIGHT = 512;
+	enum SCALE = 64;
+
+	ubyte[WIDTH * HEIGHT] pixels;
+
+	foreach (size_t i, ref ubyte pixel; pixels)
+	{
+		immutable size_t x = i % WIDTH;
+		immutable size_t y = i / HEIGHT;
+		pixel = ((openSimplex2s.noise4_Classic(x.to!double / SCALE, y.to!double / SCALE, 0, 0) + 1) * 127).to!ubyte;
+	}
+
+
+	IFImage img = IFImage(WIDTH, HEIGHT, ColFmt.Y, pixels);
+	write_png("./test-results/OpenSimplex2S 4D.png", WIDTH, HEIGHT, img.pixels);
+}
