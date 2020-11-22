@@ -833,12 +833,12 @@ unittest
 	{
 		immutable size_t x = i % WIDTH;
 		immutable size_t y = i / HEIGHT;
-		pixel = ((openSimplex2f.noise3_Classic(x.to!double / SCALE, y.to!double / SCALE, 0) + 1) * 127).to!ubyte;
+		pixel = ((openSimplex2f.noise3_XYBeforeZ(x.to!double / SCALE, y.to!double / SCALE, 0) + 1) * 127).to!ubyte;
 	}
 
 
 	IFImage img = IFImage(WIDTH, HEIGHT, ColFmt.Y, pixels);
-	write_png("./test-results/OpenSimplex2F 3D.png", WIDTH, HEIGHT, img.pixels);
+	write_png("./test-results/OpenSimplex2F 3D XYbeforeZ.png", WIDTH, HEIGHT, img.pixels);
 }
 
 @("OpenSimplex2F 4D slice")
