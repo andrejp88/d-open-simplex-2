@@ -4,3 +4,8 @@ authors "Andrej Petrović"
 license "public domain"
 
 targetType "library"
+
+configuration "unittest" {
+    dependency "imageformats" version="7.0.2"
+    dependency "silly" version="1.0.2"
+}

@@ -1,5 +1,7 @@
 {
 	"fileVersion": 1,
 	"versions": {
+		"imageformats": "7.0.2",
+		"silly": "1.0.2"
 	}
 }
