@@ -1,5 +1,7 @@
 module open_simplex_2.open_simplex_2_s;
 
+import open_simplex_2.open_simplex_2;
+
 
 /**
  * K.jpg's OpenSimplex 2, smooth variant ("SuperSimplex")
@@ -14,7 +16,7 @@ module open_simplex_2.open_simplex_2_s;
  * Multiple versions of each function are provided. See the
  * documentation above each, for more info.
  */
-public class OpenSimplex2S {
+public final class OpenSimplex2S : OpenSimplex2 {
 
 	private enum int PSIZE = 2048;
 	private enum int PMASK = 2047;

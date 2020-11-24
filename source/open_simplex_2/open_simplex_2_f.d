@@ -1,5 +1,6 @@
 module open_simplex_2.open_simplex_2_f;
 
+import open_simplex_2.open_simplex_2;
 import std.math : abs;
 
 
@@ -15,7 +16,7 @@ import std.math : abs;
  * Multiple versions of each function are provided. See the
  * documentation above each, for more info.
  */
-public class OpenSimplex2F {
+public final class OpenSimplex2F : OpenSimplex2 {
 
 	private enum int PSIZE = 2048;
 	private enum int PMASK = 2047;
