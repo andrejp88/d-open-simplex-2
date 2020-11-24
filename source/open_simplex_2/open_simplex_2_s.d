@@ -779,7 +779,6 @@ public final class OpenSimplex2S : OpenSimplex2 {
             new Grad2(-0.38268343236509,   0.923879532511287),
             new Grad2(-0.130526192220052,  0.99144486137381)
         ];
-        Grad2[] grad2XBeforeY = new Grad2[grad2.length];
         for (int i = 0; i < grad2.length; i++) {
             grad2[i].dx /= N2; grad2[i].dy /= N2;
         }
@@ -1041,6 +1040,32 @@ unittest
 
     IFImage img = IFImage(WIDTH, HEIGHT, ColFmt.Y, pixels);
     write_png("./test-results/OpenSimplex2S 2D.png", WIDTH, HEIGHT, img.pixels);
+}
+
+@("OpenSimplex2S 2D X before Y")
+unittest
+{
+    import imageformats : IFImage, ColFmt, write_png;
+    import std.conv : to;
+
+    OpenSimplex2S openSimplex2s = new OpenSimplex2S(3_874_6527_389_465L);
+
+    enum WIDTH = 512;
+    enum HEIGHT = 512;
+    enum SCALE = 64;
+
+    ubyte[WIDTH * HEIGHT] pixels;
+
+    foreach (size_t i, ref ubyte pixel; pixels)
+    {
+        immutable size_t x = i % WIDTH;
+        immutable size_t y = i / HEIGHT;
+        pixel = ((openSimplex2s.noise2_XBeforeY(x.to!double / SCALE, y.to!double / SCALE) + 1) * 127).to!ubyte;
+    }
+
+
+    IFImage img = IFImage(WIDTH, HEIGHT, ColFmt.Y, pixels);
+    write_png("./test-results/OpenSimplex2S 2D X before Y.png", WIDTH, HEIGHT, img.pixels);
 }
 
 @("OpenSimplex2S 3D slice")
