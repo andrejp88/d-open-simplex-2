@@ -3,8 +3,7 @@ module open_simplex_2.open_simplex_2;
 /**
  * Interface defining methods common to OpenSimplex2 implementations.
  */
-interface OpenSimplex2
-{
+interface OpenSimplex2 {
     /**
      * 2D OpenSimplex2 noise, standard lattice orientation.
      */
