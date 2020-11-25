@@ -867,3 +867,23 @@ unittest
     IFImage img = IFImage(WIDTH, HEIGHT, ColFmt.Y, pixels);
     write_png("./test-results/OpenSimplex2F 4D.png", WIDTH, HEIGHT, img.pixels);
 }
+
+@("OpenSimplex2F 2D speed test")
+unittest
+{
+    // For best results, run unittests compiled with ldc2 and compiler flags "-optimize" and "-inline"
+    import std.conv : to;
+    import std.datetime.stopwatch : StopWatch, Duration;
+    import std.stdio : writeln;
+
+    OpenSimplex2F openSimplex2f = new OpenSimplex2F(3_874_6527_389_465L);
+
+
+    StopWatch stopwatch;
+    stopwatch.start();
+    foreach (i; 0..1_000_000)
+    {
+        openSimplex2f.noise2(i.to!double, (999_999 - i).to!double);
+    }
+    writeln(stopwatch.peek().split!"nsecs".nsecs / 1_000_000.0);
+}
