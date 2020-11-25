@@ -3,7 +3,10 @@ description "A D language implementation of https://github.com/KdotJPG/OpenSimpl
 authors "Andrej Petrović"
 license "public domain"
 
-targetType "library"
+
+configuration "library" {
+    targetType "library"
+}
 
 configuration "unittest" {
     dependency "imageformats" version="7.0.2"
